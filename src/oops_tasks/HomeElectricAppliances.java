@@ -1,6 +1,8 @@
 package oops_tasks;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -30,7 +32,27 @@ public class HomeElectricAppliances {
 		return amount * HomeElectricAppliances.UNIT_RATE;
 	}
 
-	public static void main(String[] args) {
+	/**
+	 * displaySortedDeviceList based on the user entered usage
+	 */
+	public void displaySortedDeviceList(int sortOption) {
+		System.out.println("Device sorted based on your usage hrs:");
+
+		List<Map.Entry<String, Double>> applianceList = new ArrayList<>(applianceConsumptionMap.entrySet());
+
+		if (sortOption == 1) {
+			applianceList.sort((entry1, entry2) -> Double.compare(entry2.getValue(), entry1.getValue()));
+
+		} else if (sortOption == 2) {
+			applianceList.sort((entry1, entry2) -> Double.compare(entry1.getValue(), entry2.getValue()));
+
+		}
+
+		System.out.println(applianceList);
+
+	}
+
+	public static void main(String[] args) throws Exception {
 
 		HomeElectricAppliances homeElectricAppliances = new HomeElectricAppliances();
 
@@ -45,9 +67,23 @@ public class HomeElectricAppliances {
 				applianceConsumptionMap.put(homeAppliancesEnum.toString(), hrs);
 
 			}
-		}
 
-		System.out.printf("Total Electricity Consumption is %.2f rupees based on %d rupees per unit %n", homeElectricAppliances.getTotalPowerConsumptionAmount(), HomeElectricAppliances.UNIT_RATE);
+			System.out.printf("Total Electricity Consumption is %.2f rupees based on %d rupees per unit %n", homeElectricAppliances.getTotalPowerConsumptionAmount(), HomeElectricAppliances.UNIT_RATE);
+
+			System.out.println("Show all devices in the sorted order of your usage:");
+
+			System.out.println("Enter 1 for showing highest used device first");
+			System.out.println("Enter 2 for showing lowest used device first");
+
+			int sortOrder = scanner.nextInt();
+
+			if (sortOrder != 1 && sortOrder !=2) {
+				throw new Exception("Please enter correct sorting order " + sortOrder);
+			}
+
+			homeElectricAppliances.displaySortedDeviceList(sortOrder);
+
+		}
 	}
 
 }
@@ -73,6 +109,5 @@ enum HomeAppliancesEnum {
 	public double getUnit() {
 		return this.unit;
 	}
-
 
 }
