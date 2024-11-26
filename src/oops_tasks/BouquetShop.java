@@ -10,6 +10,10 @@ public class BouquetShop {
 	public static final int MAXFLOWERTYPECOUNT = FlowersEnum.values().length;
 	private final Map<String, Integer> flowerMap;
 
+	/**
+	 * BouquetShop constructor.
+	 * @param flowerMap
+	 */
 	private BouquetShop(Map<String, Integer> flowerMap) {
 
 		this.flowerMap = flowerMap;
@@ -17,6 +21,10 @@ public class BouquetShop {
 	}
 
 
+	/**
+	 * calculateBouquetCost
+	 * @return cost of bouquet
+	 */
 	public double calculateBouquetCost() {
 
 		double amount = 0.0;
@@ -59,6 +67,13 @@ public class BouquetShop {
 
 	}
 
+	/**
+	 * calculateBouquetCost.
+	 * @param scanner
+	 * @param flowerTypeCount
+	 * @return Map of flower type and count
+	 * @throws Exception
+	 */
 	public static Map<String, Integer> getFlowerTypeAndCountFromUser(Scanner scanner, int flowerTypeCount) throws Exception {
 
 		Map<String, Integer> validFlowerMap = new HashMap<>();
@@ -100,6 +115,11 @@ public class BouquetShop {
 	}
 
 
+	/**
+	 * isValidFlower
+	 * @param flower
+	 * @return true if flower is valid
+	 */
 	public static boolean isValidFlower(String flower) {
 
 		for (FlowersEnum flowerEnum : FlowersEnum.values()) {
