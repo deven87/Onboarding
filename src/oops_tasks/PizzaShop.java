@@ -67,7 +67,7 @@ public class PizzaShop {
         // consume new line
         scanner.nextLine();
 
-        if (noOfToppings < 1 || noOfToppings > 3) {
+        if (noOfToppings < 1 || noOfToppings > PizzaShop.MAXTOPPING) {
             throw new Exception("Incorrect no of topings");
         }
 
@@ -183,7 +183,7 @@ public class PizzaShop {
             for (PizzaToppings pizzaTopping : PizzaToppings.values()) {
 
                 if (pizzaTopping.toString().equalsIgnoreCase(topping)) {
-                    amount += amount + pizzaTopping.getToppingPrice();
+                    amount += pizzaTopping.getToppingPrice();
                 }
             }
         }
