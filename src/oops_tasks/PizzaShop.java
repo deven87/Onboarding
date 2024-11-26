@@ -135,7 +135,7 @@ public class PizzaShop {
 
             PizzaShop pizzaShop = new PizzaShop(baseChoice, toppings);
 
-            System.out.println("price of the pizza is " + pizzaShop.calculatePizzaPrice());
+            System.out.printf("price of the pizza is %.2f rupees", pizzaShop.calculatePizzaPrice());
 
         } catch (Exception e) {
             e.printStackTrace();
