@@ -35,13 +35,17 @@ public class Task2_Calculator {
 
 			result =  number1 / number2;
 			break;
-			
+
 		case "%":
 			if (number2 == 0) {
 				throw new ArithmeticException("you can not divide by zero");
 			}
-			
+
 			result =  number1 % number2;
+			break;
+
+		case "percent":
+			result =  number1 * number2 /100;
 			break;
 
 		default:
@@ -56,7 +60,7 @@ public class Task2_Calculator {
 	public static void main(String[] args) throws Exception {
 
 		if (args.length != 3) {
-			System.out.println("Allowed operation are +, -, *, /, % only, Please enter your operation in correct format, e.g. for multiplications - number1 * number2");
+			System.out.println("Allowed operation are +, -, *, /, %, percent only, Please enter your operation in correct format as command line argument, e.g. for multiplications - number1 * number2");
 			return;	
 		}
 
