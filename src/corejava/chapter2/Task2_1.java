@@ -1,4 +1,4 @@
-package corejava.chapter1;
+package corejava.chapter2;
 
 public class Task2_1 {
 	
