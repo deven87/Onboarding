@@ -6,8 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 
 class Product {
 	String category;
@@ -28,6 +31,16 @@ class Product {
 public class Test_task4 {
 
 	public static final boolean IS_FILE = false;
+
+	static IntSupplier randomOTPSupplier = () -> {
+		Random random = new Random();
+		return random.nextInt(100000, 999999);
+	};
+
+	static Supplier<Product> randomProductSupplier = ()->{
+		Random random = new Random();
+		return new Product(String.valueOf(random.nextInt()), String.valueOf(random.nextInt()), String.valueOf(random.nextInt()), random.nextDouble());
+	};
 
 	public static void main(String[] args) {
 
@@ -96,7 +109,12 @@ public class Test_task4 {
 		// 4. Print all the Premium grade products with name suffixed with '*'.
 		productList.stream().filter(prod -> prod.name.endsWith("*")).forEach(printToFileOrConsole);
 
+		// supply random product
+		productList.add(randomProductSupplier.get());
+
+		System.out.println(randomOTPSupplier.getAsInt());
 	}
+
 
 
 }
